@@ -1,13 +1,18 @@
 import React from "react";
 import "./App.css";
 import SearchPanel from "./SearchPanel";
+import { Provider } from "react-redux";
+
+import store from "../store";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Meteorite Explorer</h1>
-      <SearchPanel />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <h1>Meteorite Explorer</h1>
+        <SearchPanel />
+      </div>
+    </Provider>
   );
 }
 
