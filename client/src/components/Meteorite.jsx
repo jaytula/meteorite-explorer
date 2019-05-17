@@ -30,7 +30,7 @@ function Meteorite({ data, classes }) {
       <div>{name}</div> <div>{id}</div>
       <div>{nametype}</div>
       <div>{recclass}</div>
-      <div>{mass}</div>
+      <div>{Math.round(mass)}</div>
       <div>{fall}</div>
       <div>{new Date(year).getFullYear() || "N/A"}</div>
       <div>{reclat}</div>
