@@ -3,17 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 /*
 const RowHeader = (
-  <div>
-    <div>Name</div>
-    <div>Id</div>
-    <div>Name Type</div>
-    <div>Rec Class</div>
-    <div>Mass</div>
-    <div>Fall</div>
-    <div>Year</div>
-    <div>Lat</div>
-    <div>Long</div>
-  </div>
+
 );
 */
 
