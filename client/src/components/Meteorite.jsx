@@ -1,12 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 
-/*
-const RowHeader = (
-
-);
-*/
-
 const styles = {
   root: {
     display: "grid",
