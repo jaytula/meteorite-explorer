@@ -13,7 +13,7 @@ export const setSearchResults = text => async dispatch => {
 
     const { data, status, statusText } = response;
     if (status !== 200) throw new Error(statusText);
-    dispatch({ type: SET_RESULTS, payload: data });
+    dispatch({ type: SET_RESULTS, payload: { term: text, results: data } });
   } catch (err) {
     console.error(err);
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Meteorite() {
+function Meteorite({ data }) {
   return (
     <div>
       <li>A meteorite</li>
