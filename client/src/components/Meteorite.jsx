@@ -1,20 +1,29 @@
 import React from "react";
+import { withStyles } from "@material-ui/core/styles";
 
+/*
 const RowHeader = (
   <div>
-    <li>Name</li>
-    <li>Id</li>
-    <li>Name Type</li>
-    <li>Rec Class</li>
-    <li>Mass</li>
-    <li>Fall</li>
-    <li>Year</li>
-    <li>Lat</li>
-    <li>Long</li>
+    <div>Name</div>
+    <div>Id</div>
+    <div>Name Type</div>
+    <div>Rec Class</div>
+    <div>Mass</div>
+    <div>Fall</div>
+    <div>Year</div>
+    <div>Lat</div>
+    <div>Long</div>
   </div>
 );
+*/
 
-function Meteorite({ data }) {
+const styles = {
+  root: {
+    display: "grid",
+    gridTemplateColumns: "2fr repeat(8, 1fr)",
+  },
+};
+function Meteorite({ data, classes }) {
   const {
     name,
     id,
@@ -27,17 +36,17 @@ function Meteorite({ data }) {
     reclong,
   } = data;
   return (
-    <div>
-      <li>{name}</li> <li>{id}</li>
-      <li>{nametype}</li>
-      <li>{recclass}</li>
-      <li>{mass}</li>
-      <li>{fall}</li>
-      <li>{year}</li>
-      <li>{reclat}</li>
-      <li>{reclong}</li>
+    <div className={classes.root}>
+      <div>{name}</div> <div>{id}</div>
+      <div>{nametype}</div>
+      <div>{recclass}</div>
+      <div>{mass}</div>
+      <div>{fall}</div>
+      <div>{new Date(year).getFullYear() || "N/A"}</div>
+      <div>{reclat}</div>
+      <div>{reclong}</div>
     </div>
   );
 }
 
-export default Meteorite;
+export default withStyles(styles)(Meteorite);
