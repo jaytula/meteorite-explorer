@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import SearchPanel from "./SearchPanel";
 import { Provider } from "react-redux";
 
