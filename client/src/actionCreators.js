@@ -1,11 +1,11 @@
 import axios from "axios";
 
 import { SET_RESULTS } from "./actionTypes";
-const { BACKEND_ENDPOINT } = process.env;
+const { REACT_APP_BACKEND } = process.env;
 
 export const setSearchResults = text => async dispatch => {
   try {
-    const response = await axios.get(BACKEND_ENDPOINT, {
+    const response = await axios.get(REACT_APP_BACKEND, {
       params: {
         $where: `lower(name) like lower('%${text}%')`,
       },
