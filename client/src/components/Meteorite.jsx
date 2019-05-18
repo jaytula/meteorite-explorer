@@ -64,7 +64,9 @@ function Meteorite({ data, classes }) {
       </div>
       <div className={classes.belowMedium}>
         <header>
-          <div>{name}</div>
+          <div>
+            {name} ({new Date(year).getFullYear() || "Unknown Year"})
+          </div>
           <div>{id}</div>
         </header>
         <div>
@@ -80,16 +82,8 @@ function Meteorite({ data, classes }) {
           <div>{Math.round(mass) || "N/A"}</div>
         </div>
         <div>
-          <div>Rec Class</div>
-          <div>{recclass}</div>
-        </div>
-        <div>
           <div>Fall</div>
           <div>{fall}</div>
-        </div>
-        <div>
-          <div>Year</div>
-          <div>{new Date(year).getFullYear() || "N/A"}</div>
         </div>
         <div>
           <div>Lat, Long</div>
