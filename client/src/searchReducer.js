@@ -10,7 +10,7 @@ try {
   if (!data) throw new Error(`Key ${LS_KEY} not truthy`);
   defaultState = JSON.parse(data);
 } catch (err) {
-  defaultState = { term: null, results: [] };
+  defaultState = { term: "", results: [] };
 }
 
 const searchReducer = (state = defaultState, action) => {
