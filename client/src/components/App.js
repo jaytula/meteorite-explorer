@@ -35,18 +35,16 @@ const styles = theme => ({
   app: {
     width: "100%",
     maxWidth: "1180px",
-    height: "100%",
+    height: "100vh",
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#edf0f5",
     "& > header": {
       "& > h1": {
+        textAlign: "center",
         margin: 0,
         padding: "8px",
       },
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
       background: "#29487d",
       color: "white",
     },
