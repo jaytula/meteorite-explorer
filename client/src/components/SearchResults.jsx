@@ -6,6 +6,7 @@ import Meteorite from "./Meteorite";
 const styles = {
   root: {
     overflowY: "scroll",
+    width: "100%",
   },
 };
 /*
