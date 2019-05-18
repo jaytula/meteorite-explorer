@@ -7,17 +7,28 @@ const styles = {
   root: {
     overflowY: "scroll",
     width: "100%",
+    height: "100%",
+  },
+  noResults: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
   },
 };
-/*
 
-*/
 function SearchResults({ results, classes }) {
   return (
     <div className={classes.root}>
       {results.map(meteor => (
         <Meteorite key={meteor.id} data={meteor} />
       ))}
+      {!results.length ? (
+        <div className={classes.noResults}>
+          <div>No results</div>
+        </div>
+      ) : null}
     </div>
   );
 }
