@@ -17,9 +17,8 @@ const styles = theme => ({
     display: "flex",
   },
   tableHeader: {
-    display: "grid",
+    display: "none",
     width: "100%",
-    gridTemplateColumns: "2fr repeat(7, 1fr)",
     fontWeight: "bold",
     fontSize: "1.08rem",
     padding: "8px 0px",
@@ -28,6 +27,7 @@ const styles = theme => ({
       padding: "4px",
     },
     [theme.breakpoints.up("md")]: {
+      display: "grid",
       gridTemplateColumns: "2fr repeat(8, 1fr)",
     },
     borderBottom: "1px solid gray",
