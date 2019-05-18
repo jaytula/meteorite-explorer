@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import SearchPanel from "./SearchPanel";
 import SearchResults from "./SearchResults";
+import LoadingSpinner from "./LoadingSpinner";
 
 import store from "../store";
 
@@ -66,6 +67,7 @@ function App({ classes }) {
             <h1>Meteorite Explorer</h1>
             <SearchPanel />
           </header>
+          <LoadingSpinner />
           <div className={classes.tableHeader}>
             <div>Name</div>
             <div>Id</div>

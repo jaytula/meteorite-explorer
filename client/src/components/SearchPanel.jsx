@@ -16,7 +16,13 @@ const styles = {
   },
 };
 
-function SearchPanel({ term, dispatchSetSearchResults, classes, results }) {
+function SearchPanel({
+  term,
+  dispatchSetSearchResults,
+  classes,
+  results,
+  isLoading,
+}) {
   const [text, setText] = useState(term);
   const [fresh, setFresh] = useState(true);
 
@@ -40,16 +46,20 @@ function SearchPanel({ term, dispatchSetSearchResults, classes, results }) {
         type="text"
         spellCheck={false}
         value={text}
+        disabled={isLoading}
         onChange={e => setText(e.target.value)}
       />
-      <button type="submit">Search</button>
+      <button type="submit" disabled={isLoading}>
+        Search
+      </button>
     </form>
   );
 }
 
-const mapStateToProps = ({ search }) => ({
+const mapStateToProps = ({ search, app }) => ({
   term: search.term,
   results: search.results,
+  isLoading: app.isLoading,
 });
 
 const mapDispatchToProps = {
