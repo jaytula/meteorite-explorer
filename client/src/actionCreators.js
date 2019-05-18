@@ -1,6 +1,12 @@
 import axios from "axios";
 
-import { SET_RESULTS, SET_LOADING, CLEAR_LOADING } from "./actionTypes";
+import {
+  SET_RESULTS,
+  SET_LOADING,
+  CLEAR_LOADING,
+  SET_APP_ERROR,
+  CLEAR_APP_ERROR,
+} from "./actionTypes";
 const { REACT_APP_BACKEND } = process.env;
 
 export const setSearchResults = text => async dispatch => {
@@ -21,3 +27,12 @@ export const setSearchResults = text => async dispatch => {
     console.error(err);
   }
 };
+
+export const setErrorMessage = errorMessage => ({
+  type: SET_APP_ERROR,
+  payload: { errorMessage },
+});
+
+export const clearErrorMessage = () => ({
+  type: CLEAR_APP_ERROR,
+});
