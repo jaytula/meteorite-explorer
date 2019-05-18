@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -16,9 +16,14 @@ const styles = {
   },
 };
 
-function SearchPanel({ term, dispatchSetSearchResults, classes }) {
+function SearchPanel({ term, dispatchSetSearchResults, classes, results }) {
   const [text, setText] = useState(term);
 
+  useEffect(() => {
+    if (text === "" && !results.length) {
+      dispatchSetSearchResults(text);
+    }
+  }, [dispatchSetSearchResults, results.length, text]);
   function onSubmit(e) {
     e.preventDefault();
     dispatchSetSearchResults(text);
@@ -39,6 +44,7 @@ function SearchPanel({ term, dispatchSetSearchResults, classes }) {
 
 const mapStateToProps = ({ search }) => ({
   term: search.term,
+  results: search.results,
 });
 
 const mapDispatchToProps = {
