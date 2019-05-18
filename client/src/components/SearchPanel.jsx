@@ -18,12 +18,17 @@ const styles = {
 
 function SearchPanel({ term, dispatchSetSearchResults, classes, results }) {
   const [text, setText] = useState(term);
+  const [fresh, setFresh] = useState(true);
 
   useEffect(() => {
-    if (text === "" && !results.length) {
-      dispatchSetSearchResults(text);
-    }
-  }, [dispatchSetSearchResults, results.length, text]);
+    const fetchResults = () => {
+      if (text === "" && !results.length && fresh) {
+        dispatchSetSearchResults(text);
+        setFresh(false);
+      }
+    };
+    fetchResults();
+  }, [dispatchSetSearchResults, fresh, results.length, text]);
   function onSubmit(e) {
     e.preventDefault();
     dispatchSetSearchResults(text);
