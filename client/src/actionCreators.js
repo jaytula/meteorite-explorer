@@ -21,10 +21,11 @@ export const setSearchResults = text => async dispatch => {
 
     const { data, status, statusText } = response;
     if (status !== 200) throw new Error(statusText);
+    dispatch(setErrorMessage(`Retrieved ${data.length} results`));
     dispatch({ type: SET_RESULTS, payload: { term: text, results: data } });
   } catch (err) {
     dispatch({ type: CLEAR_LOADING });
-    console.error(err);
+    dispatch(setErrorMessage(err.message));
   }
 };
 

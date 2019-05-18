@@ -50,14 +50,6 @@ function NotificationBar({
         }}
         message={<span id="message-id">{errorMessage}</span>}
         action={[
-          <Button
-            key="undo"
-            color="secondary"
-            size="small"
-            onClick={handleClose}
-          >
-            UNDO
-          </Button>,
           <IconButton
             key="close"
             aria-label="Close"
