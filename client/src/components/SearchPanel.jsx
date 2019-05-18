@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { withStyles } from "@material-ui/core/styles";
 
 import { setSearchResults } from "../actionCreators";
 
-function SearchPanel({ term, dispatchSetSearchResults }) {
+const styles = {
+  root: {
+    "& > h1": {
+      padding: "8px",
+    },
+    "& > input": { flex: 1, padding: "16px 8px" },
+    display: "flex",
+    flex: 1,
+    padding: "8px",
+  },
+};
+
+function SearchPanel({ term, dispatchSetSearchResults, classes }) {
   const [text, setText] = useState(term);
 
   function onSubmit(e) {
@@ -12,16 +25,15 @@ function SearchPanel({ term, dispatchSetSearchResults }) {
   }
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          value={text}
-          onChange={e => setText(e.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form>
-    </div>
+    <form className={classes.root} onSubmit={onSubmit}>
+      <input
+        type="text"
+        spellCheck={false}
+        value={text}
+        onChange={e => setText(e.target.value)}
+      />
+      <button type="submit">Search</button>
+    </form>
   );
 }
 
@@ -36,4 +48,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(SearchPanel);
+)(withStyles(styles)(SearchPanel));

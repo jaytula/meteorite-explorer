@@ -1,16 +1,26 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = {
+const styles = theme => ({
   root: {
     display: "grid",
-    gridTemplateColumns: "2fr repeat(8, 1fr)",
+    gridTemplateColumns: "2fr repeat(7, 1fr)",
     padding: "4px 0px",
     "& > div": {
       padding: "4px",
     },
+    borderBottom: "1px solid #dddddd",
+    [theme.breakpoints.up("md")]: {
+      gridTemplateColumns: "2fr repeat(8, 1fr)",
+    },
   },
-};
+  medium: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "inherit",
+    },
+  },
+});
 function Meteorite({ data, classes }) {
   const {
     name,
@@ -26,7 +36,7 @@ function Meteorite({ data, classes }) {
   return (
     <div className={classes.root}>
       <div>{name}</div> <div>{id}</div>
-      <div>{nametype}</div>
+      <div className={classes.medium}>{nametype}</div>
       <div>{recclass}</div>
       <div>{Math.round(mass) || "N/A"}</div>
       <div>{fall}</div>

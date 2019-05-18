@@ -7,7 +7,7 @@ import SearchResults from "./SearchResults";
 
 import store from "../store";
 
-const styles = {
+const styles = theme => ({
   root: {
     height: "100vh",
     background: "#d2dce5",
@@ -19,14 +19,18 @@ const styles = {
   tableHeader: {
     display: "grid",
     width: "100%",
-    gridTemplateColumns: "2fr repeat(8, 1fr)",
+    gridTemplateColumns: "2fr repeat(7, 1fr)",
     fontWeight: "bold",
     fontSize: "1.08rem",
     padding: "8px 0px",
-    background: "orange",
+    background: "#feefc3",
     "& > div": {
       padding: "4px",
     },
+    [theme.breakpoints.up("md")]: {
+      gridTemplateColumns: "2fr repeat(8, 1fr)",
+    },
+    borderBottom: "1px solid gray",
   },
   app: {
     width: "100%",
@@ -34,19 +38,37 @@ const styles = {
     height: "100%",
     display: "flex",
     flexDirection: "column",
+    backgroundColor: "#edf0f5",
+    "& > header": {
+      padding: "0px 16px",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      background: "#29487d",
+      color: "white",
+    },
   },
-};
+  medium: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "inherit",
+    },
+  },
+});
+
 function App({ classes }) {
   return (
     <Provider store={store}>
       <div className={classes.root}>
         <div className={classes.app}>
-          <h1>Meteorite Explorer</h1>
-          <SearchPanel />
+          <header>
+            <h1>Meteorite Explorer</h1>
+            <SearchPanel />
+          </header>
           <div className={classes.tableHeader}>
             <div>Name</div>
             <div>Id</div>
-            <div>Name Type</div>
+            <div className={classes.medium}>Name Type</div>
             <div>Rec Class</div>
             <div>Mass</div>
             <div>Fall</div>
