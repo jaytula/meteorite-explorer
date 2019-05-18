@@ -40,9 +40,12 @@ const styles = theme => ({
     flexDirection: "column",
     backgroundColor: "#edf0f5",
     "& > header": {
-      padding: "0px 16px",
+      "& > h1": {
+        margin: 0,
+        padding: "8px",
+      },
       display: "flex",
-      justifyContent: "space-between",
+      flexDirection: "column",
       alignItems: "center",
       background: "#29487d",
       color: "white",

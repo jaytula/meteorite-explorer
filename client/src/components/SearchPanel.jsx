@@ -12,7 +12,7 @@ const styles = {
     "& > input": { flex: 1, padding: "16px 8px" },
     display: "flex",
     flex: 1,
-    padding: "8px",
+    width: "100%",
   },
 };
 
