@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchPanel from "./SearchPanel";
 import SearchResults from "./SearchResults";
 import LoadingSpinner from "./LoadingSpinner";
+import NotificationBar from "./NotificationBar";
 
 import store from "../store";
 
@@ -81,6 +82,7 @@ function App({ classes }) {
           </div>
           <SearchResults />
         </div>
+        <NotificationBar />
       </div>
     </Provider>
   );
