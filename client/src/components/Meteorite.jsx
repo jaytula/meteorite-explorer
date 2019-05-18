@@ -5,6 +5,10 @@ const styles = {
   root: {
     display: "grid",
     gridTemplateColumns: "2fr repeat(8, 1fr)",
+    padding: "4px 0px",
+    "& > div": {
+      padding: "4px",
+    },
   },
 };
 function Meteorite({ data, classes }) {
@@ -24,7 +28,7 @@ function Meteorite({ data, classes }) {
       <div>{name}</div> <div>{id}</div>
       <div>{nametype}</div>
       <div>{recclass}</div>
-      <div>{Math.round(mass)}</div>
+      <div>{Math.round(mass) || "N/A"}</div>
       <div>{fall}</div>
       <div>{new Date(year).getFullYear() || "N/A"}</div>
       <div>{reclat}</div>
