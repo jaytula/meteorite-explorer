@@ -5,17 +5,21 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
   root: {
-    position: "absolute",
-    right: "10px",
-    bottom: "10px",
+    position: "fixed",
+    left: 0,
+    top: 0,
     width: "100%",
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 
 function LoadingSpinner({ isLoading, classes }) {
   return isLoading ? (
     <div className={classes.root}>
-      <CircularProgress className={classes.root} />
+      <CircularProgress />
     </div>
   ) : null;
 }
