@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import SearchResults from "./SearchResults";
 
 import { setSearchResults } from "../actionCreators";
 
-function SearchPanel({ dispatchSetSearchResults }) {
-  const [text, setText] = useState("");
+function SearchPanel({ term, dispatchSetSearchResults }) {
+  const [text, setText] = useState(term);
 
   function onSubmit(e) {
     e.preventDefault();
@@ -21,17 +20,20 @@ function SearchPanel({ dispatchSetSearchResults }) {
           onChange={e => setText(e.target.value)}
         />
         <button type="submit">Search</button>
-        <SearchResults />
       </form>
     </div>
   );
 }
+
+const mapStateToProps = ({ search }) => ({
+  term: search.term,
+});
 
 const mapDispatchToProps = {
   dispatchSetSearchResults: setSearchResults,
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(SearchPanel);
