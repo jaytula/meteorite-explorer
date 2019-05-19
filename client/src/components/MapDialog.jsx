@@ -23,9 +23,7 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-function MapDialog({ data, classes }) {
-  const [open, setOpen] = useState(false);
-
+function MapDialog({ data, classes, open, setOpen }) {
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -33,6 +31,8 @@ function MapDialog({ data, classes }) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const { id, name } = data;
 
   return (
     <div>
@@ -56,7 +56,9 @@ function MapDialog({ data, classes }) {
             >
               <CloseIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" className={classes.flex} />
+            <Typography variant="h6" color="inherit" className={classes.flex}>
+              {id} {name}
+            </Typography>
           </Toolbar>
         </AppBar>
       </Dialog>

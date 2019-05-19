@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import MapDialog from "./MapDialog";
 
@@ -7,6 +7,7 @@ const commonStyles = {
     border: "1px solid #aaa",
   },
   display: "none",
+  cursor: "pointer",
 };
 
 const styles = theme => ({
@@ -47,6 +48,7 @@ const styles = theme => ({
 });
 
 function Meteorite({ data, classes }) {
+  const [open, setOpen] = useState(false);
   const {
     name,
     id,
@@ -60,7 +62,7 @@ function Meteorite({ data, classes }) {
   } = data;
   return (
     <>
-      <div className={classes.mediumUp}>
+      <div className={classes.mediumUp} onClick={() => setOpen(true)}>
         <div>
           <b>{name}</b>
         </div>
@@ -73,8 +75,8 @@ function Meteorite({ data, classes }) {
         <div>{reclat}</div>
         <div>{reclong}</div>
       </div>
-      <MapDialog data={data} />
-      <div className={classes.belowMedium}>
+      <MapDialog data={data} open={open} setOpen={setOpen} />
+      <div className={classes.belowMedium} onClick={() => setOpen(true)}>
         <header>
           <div>
             {name} ({new Date(year).getFullYear() || "Unknown Year"})
