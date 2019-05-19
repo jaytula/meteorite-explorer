@@ -65,7 +65,7 @@ function MapDialog({ data, classes, open, setOpen }) {
             </Typography>
           </Toolbar>
         </AppBar>
-        <BasicMap />
+        <BasicMap data={data} />
       </Dialog>
     </div>
   );
