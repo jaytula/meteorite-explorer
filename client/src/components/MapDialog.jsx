@@ -10,6 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 
+import BasicMap from "./BasicMap";
+
 const styles = {
   appBar: {
     position: "relative",
@@ -17,6 +19,7 @@ const styles = {
   flex: {
     flex: 1,
   },
+  dialog: {},
 };
 
 function Transition(props) {
@@ -42,6 +45,7 @@ function MapDialog({ data, classes, open, setOpen }) {
         </Button>
       )}
       <Dialog
+        className={classes.dialog}
         fullScreen
         open={open}
         onClose={handleClose}
@@ -61,6 +65,7 @@ function MapDialog({ data, classes, open, setOpen }) {
             </Typography>
           </Toolbar>
         </AppBar>
+        <BasicMap />
       </Dialog>
     </div>
   );
