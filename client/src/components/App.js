@@ -26,7 +26,7 @@ const styles = theme => ({
     padding: "8px 0px",
     background: "#feefc3",
     "& > div": {
-      padding: "4px",
+      padding: "8px",
     },
     [theme.breakpoints.up("md")]: {
       display: "grid",
@@ -51,12 +51,6 @@ const styles = theme => ({
       color: "white",
     },
   },
-  medium: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "inherit",
-    },
-  },
 });
 
 function App({ classes }) {
@@ -72,7 +66,7 @@ function App({ classes }) {
           <div className={classes.tableHeader}>
             <div>Name</div>
             <div>Id</div>
-            <div className={classes.medium}>Name Type</div>
+            <div title="Name Type">Type</div>
             <div>Rec Class</div>
             <div>Mass</div>
             <div>Fall</div>

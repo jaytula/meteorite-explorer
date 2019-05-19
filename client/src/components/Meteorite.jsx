@@ -9,7 +9,7 @@ const styles = theme => ({
       display: "grid",
       padding: "4px 0px",
       "& > div": {
-        padding: "4px",
+        padding: "4px 8px",
       },
       borderBottom: "1px solid #dddddd",
 
@@ -53,7 +53,10 @@ function Meteorite({ data, classes }) {
   return (
     <>
       <div className={classes.mediumUp}>
-        <div>{name}</div> <div>{id}</div>
+        <div>
+          <b>{name}</b>
+        </div>
+        <div>{id}</div>
         <div className={classes.medium}>{nametype}</div>
         <div>{recclass}</div>
         <div>{Math.round(mass) || "N/A"}</div>
