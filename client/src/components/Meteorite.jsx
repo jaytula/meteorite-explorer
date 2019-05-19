@@ -2,9 +2,16 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import MapDialog from "./MapDialog";
 
+const commonStyles = {
+  "&:hover": {
+    border: "1px solid #aaa",
+  },
+  display: "none",
+};
+
 const styles = theme => ({
   mediumUp: {
-    display: "none",
+    ...commonStyles,
 
     [theme.breakpoints.up("md")]: {
       display: "grid",
@@ -18,7 +25,7 @@ const styles = theme => ({
     },
   },
   belowMedium: {
-    display: "none",
+    ...commonStyles,
     [theme.breakpoints.between("xs", "sm")]: {
       display: "inherit",
       borderBottom: "1px solid #dddddd",
