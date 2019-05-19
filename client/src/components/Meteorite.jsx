@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import MapDialog from "./MapDialog";
 
 const styles = theme => ({
   mediumUp: {
@@ -65,6 +66,7 @@ function Meteorite({ data, classes }) {
         <div>{reclat}</div>
         <div>{reclong}</div>
       </div>
+      <MapDialog data={data} />
       <div className={classes.belowMedium}>
         <header>
           <div>
