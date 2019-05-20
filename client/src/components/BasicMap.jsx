@@ -76,10 +76,10 @@ function BasicMap({ data }) {
               <circle
                 cx={0}
                 cy={0}
-                r={5}
+                r={2}
                 style={{
                   stroke: "#FF5722",
-                  strokeWidth: 3,
+                  strokeWidth: 2,
                   opacity: 0.9,
                 }}
               />
