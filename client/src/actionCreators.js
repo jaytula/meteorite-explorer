@@ -15,7 +15,7 @@ export const setSearchResults = text => async dispatch => {
     const response = await axios.get(REACT_APP_BACKEND, {
       params: {
         $where: `lower(name) like lower('%${text}%')`,
-        $order: ":id",
+        $order: "name",
       },
     });
     dispatch({ type: CLEAR_LOADING });
