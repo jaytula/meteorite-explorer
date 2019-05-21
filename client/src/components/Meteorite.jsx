@@ -4,7 +4,7 @@ import MapDialog from "./MapDialog";
 
 const commonStyles = {
   "&:hover": {
-    border: "1px solid #aaa",
+    outline: "1px solid #aaa",
   },
   display: "none",
   cursor: "pointer",
