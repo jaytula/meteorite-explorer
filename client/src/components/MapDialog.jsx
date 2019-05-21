@@ -15,6 +15,7 @@ import BasicMap from "./BasicMap";
 const styles = {
   appBar: {
     position: "relative",
+    backgroundColor: "#29487d",
   },
   flex: {
     flex: 1,
