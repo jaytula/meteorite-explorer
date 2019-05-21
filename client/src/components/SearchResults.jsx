@@ -5,6 +5,10 @@ import Meteorite from "./Meteorite";
 
 const styles = {
   root: {
+    width: "100%",
+    height: "100%",
+  },
+  results: {
     overflowY: "scroll",
     width: "100%",
     height: "100%",
@@ -18,17 +22,28 @@ const styles = {
   },
 };
 
+function handleScroll(el) {
+  const position = el.target.offsetHeight + el.target.scrollTop;
+  const bottom = position >= el.target.scrollHeight;
+
+  if (bottom) {
+    console.log("Reached bottom");
+  }
+}
+
 function SearchResults({ results, classes }) {
   return (
     <div className={classes.root}>
-      {results.map(meteor => (
-        <Meteorite key={meteor.id} data={meteor} />
-      ))}
-      {!results.length ? (
-        <div className={classes.noResults}>
-          <div>No results</div>
-        </div>
-      ) : null}
+      <div className={classes.results} onScroll={handleScroll}>
+        {results.map(meteor => (
+          <Meteorite key={meteor.id} data={meteor} />
+        ))}
+        {!results.length ? (
+          <div className={classes.noResults}>
+            <div>No results</div>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }
