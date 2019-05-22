@@ -56,21 +56,23 @@ function handleScroll(el) {
 function SearchResults({ results, classes }) {
   return (
     <div className={classes.root}>
-      {!results.length ? null : (
-        <div className={classes.resultsInfo}>
-          Showing {results.length} results.
+      <div>
+        {!results.length ? null : (
+          <div className={classes.resultsInfo}>
+            Showing {results.length} results.
+          </div>
+        )}
+        <div className={classes.tableHeader}>
+          <div>Name</div>
+          <div>Id</div>
+          <div title="Name Type">Type</div>
+          <div>Rec Class</div>
+          <div>Mass</div>
+          <div>Fall</div>
+          <div>Year</div>
+          <div>Lat</div>
+          <div>Long</div>
         </div>
-      )}
-      <div className={classes.tableHeader}>
-        <div>Name</div>
-        <div>Id</div>
-        <div title="Name Type">Type</div>
-        <div>Rec Class</div>
-        <div>Mass</div>
-        <div>Fall</div>
-        <div>Year</div>
-        <div>Lat</div>
-        <div>Long</div>
       </div>
       <div className={classes.results} onScroll={handleScroll}>
         {results.map(meteor => (
