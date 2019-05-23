@@ -44,16 +44,18 @@ const styles = theme => ({
   },
 });
 
-function handleScroll(el) {
-  const position = el.target.offsetHeight + el.target.scrollTop;
-  const bottom = position >= el.target.scrollHeight;
 
-  if (bottom) {
-    console.log("Reached bottom");
-  }
-}
 
 function SearchResults({ results, classes }) {
+  function handleScroll(el) {
+    const position = el.target.offsetHeight + el.target.scrollTop;
+    const bottom = position >= el.target.scrollHeight;
+  
+    if (bottom) {
+      console.log("Reached bottom");
+    }
+  }
+  
   return (
     <>
       <div>
