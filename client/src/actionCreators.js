@@ -13,9 +13,11 @@ const { REACT_APP_BACKEND } = process.env;
 export const setSearchResults = (text, $offset=0) => async dispatch => {
   try {
     dispatch({ type: SET_LOADING });
+    const $where = text.startsWith ? text.slice(1) : `lower(name) like lower('%${text}%')`;
+    
     const response = await axios.get(REACT_APP_BACKEND, {
       params: {
-        $where: `lower(name) like lower('%${text}%')`,
+        $where,
         $order: "name",
         $offset,
         $limit: '100',
