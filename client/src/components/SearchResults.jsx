@@ -48,7 +48,7 @@ const styles = theme => ({
 
 
 
-function SearchResults({ results, classes, term, end, dispatchSetSearchResults }) {
+function SearchResults({ results, classes, term, end, dispatchSetSearchResults, count}) {
   function handleScroll(el) {
     const position = el.target.offsetHeight + el.target.scrollTop;
     const bottom = position >= el.target.scrollHeight;
@@ -64,7 +64,7 @@ function SearchResults({ results, classes, term, end, dispatchSetSearchResults }
       <div>
         {!results.length ? null : (
           <div className={classes.resultsInfo}>
-            Showing {results.length} results.
+            Showing {results.length} of {count} results.
           </div>
         )}
         <div className={classes.tableHeader}>
@@ -96,7 +96,8 @@ function SearchResults({ results, classes, term, end, dispatchSetSearchResults }
 const mapStateToProps = ({ search }) => ({
   results: search.results,
   term: search.term,
-  end: search.end
+  end: search.end,
+  count: search.count,
 });
 
 const mapDispatchToProps = {

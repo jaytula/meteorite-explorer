@@ -2,7 +2,9 @@ import axios from "axios";
 
 import {
   SET_RESULTS,
+  SET_RESULTS_COUNT,
   ADD_RESULTS,
+
   SET_LOADING,
   CLEAR_LOADING,
   SET_APP_ERROR,
@@ -24,8 +26,9 @@ export const setSearchResults = (text, $offset=0) => async dispatch => {
       },
     });
     if(!$offset) {
-      //const countResponse = axios.get(REACT_APP_BACKEND, { $where: `count(${$where})`});
-      //console.log({countResponse});
+      const countResponse = await axios.get(REACT_APP_BACKEND, { params: { $select: 'count(*)', $where } });
+      const count = countResponse.data[0].count;
+      dispatch({type: SET_RESULTS_COUNT, count})
     }
     dispatch({ type: CLEAR_LOADING });
 

@@ -1,4 +1,5 @@
 export const SET_RESULTS = "SET_RESULTS";
+export const SET_RESULTS_COUNT = "SET_RESULTS_COUNT";
 export const ADD_RESULTS = "ADD_RESULTS";
 export const CLEAR_RESULTS = "CLEAR_RESULTS";
 
