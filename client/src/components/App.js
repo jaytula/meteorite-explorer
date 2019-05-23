@@ -18,7 +18,13 @@ const styles = theme => ({
     alignItems: "center",
     display: "flex",
   },
-
+  tip: {
+    padding: '4px',
+    textAlign: 'center',
+    '& > a:visited, & > a:link': {
+      color: 'white',
+    }
+  },
   app: {
     width: "100%",
     maxWidth: "1180px",
@@ -45,6 +51,8 @@ function App({ classes }) {
         <div className={classes.app}>
           <header>
             <h1>Meteorite Explorer</h1>
+            <div className={classes.tip}>
+              <b>Tip:</b> search using <a href="https://dev.socrata.com/docs/queries/where.html">SoQL</a> by prefixing with a colon. For names starting with Z, :starts_with(name, 'Z')</div>
             <SearchPanel />
           </header>
           <LoadingSpinner />
