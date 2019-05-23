@@ -13,7 +13,7 @@ const { REACT_APP_BACKEND } = process.env;
 export const setSearchResults = (text, $offset=0) => async dispatch => {
   try {
     dispatch({ type: SET_LOADING });
-    const $where = text.startsWith ? text.slice(1) : `lower(name) like lower('%${text}%')`;
+    const $where = text.startsWith(':') ? text.slice(1) : `lower(name) like lower('%${text}%')`;
     
     const response = await axios.get(REACT_APP_BACKEND, {
       params: {
@@ -23,6 +23,10 @@ export const setSearchResults = (text, $offset=0) => async dispatch => {
         $limit: '100',
       },
     });
+    if(!$offset) {
+      //const countResponse = axios.get(REACT_APP_BACKEND, { $where: `count(${$where})`});
+      //console.log({countResponse});
+    }
     dispatch({ type: CLEAR_LOADING });
 
     const { data, status, statusText } = response;
