@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Meteorite from "./Meteorite";
 
+import { setSearchResults } from '../actionCreators';
+
 const styles = theme => ({
   root: {
     width: "100%",
@@ -46,16 +48,17 @@ const styles = theme => ({
 
 
 
-function SearchResults({ results, classes }) {
+function SearchResults({ results, classes, term, end, dispatchSetSearchResults }) {
   function handleScroll(el) {
     const position = el.target.offsetHeight + el.target.scrollTop;
     const bottom = position >= el.target.scrollHeight;
   
-    if (bottom) {
+    if (bottom && !end) {
       console.log("Reached bottom");
+      dispatchSetSearchResults(term, results.length)
     }
   }
-  
+
   return (
     <>
       <div>
@@ -92,6 +95,12 @@ function SearchResults({ results, classes }) {
 
 const mapStateToProps = ({ search }) => ({
   results: search.results,
+  term: search.term,
+  end: search.end
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(SearchResults));
+const mapDispatchToProps = {
+  dispatchSetSearchResults: setSearchResults,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SearchResults));

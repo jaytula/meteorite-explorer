@@ -2,6 +2,7 @@ import axios from "axios";
 
 import {
   SET_RESULTS,
+  ADD_RESULTS,
   SET_LOADING,
   CLEAR_LOADING,
   SET_APP_ERROR,
@@ -9,13 +10,15 @@ import {
 } from "./actionTypes";
 const { REACT_APP_BACKEND } = process.env;
 
-export const setSearchResults = text => async dispatch => {
+export const setSearchResults = (text, $offset=0) => async dispatch => {
   try {
     dispatch({ type: SET_LOADING });
     const response = await axios.get(REACT_APP_BACKEND, {
       params: {
         $where: `lower(name) like lower('%${text}%')`,
         $order: "name",
+        $offset,
+        $limit: '100',
       },
     });
     dispatch({ type: CLEAR_LOADING });
@@ -23,7 +26,7 @@ export const setSearchResults = text => async dispatch => {
     const { data, status, statusText } = response;
     if (status !== 200) throw new Error(statusText);
     dispatch(setErrorMessage(`Retrieved ${data.length} results`));
-    dispatch({ type: SET_RESULTS, payload: { term: text, results: data } });
+    dispatch({ type: $offset ? ADD_RESULTS : SET_RESULTS, payload: { term: text, results: data, end: !data.length || data.length < 100 } });
   } catch (err) {
     dispatch({ type: CLEAR_LOADING });
     dispatch(setErrorMessage(err.message));
