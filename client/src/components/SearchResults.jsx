@@ -55,7 +55,7 @@ function handleScroll(el) {
 
 function SearchResults({ results, classes }) {
   return (
-    <div className={classes.root}>
+    <>
       <div>
         {!results.length ? null : (
           <div className={classes.resultsInfo}>
@@ -84,7 +84,7 @@ function SearchResults({ results, classes }) {
           </div>
         ) : null}
       </div>
-    </div>
+    </>
   );
 }
 
