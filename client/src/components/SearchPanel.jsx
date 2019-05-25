@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import useReactRouter from 'use-react-router';
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -23,21 +24,28 @@ function SearchPanel({
   results,
   isLoading,
 }) {
+  const { history, location } = useReactRouter();
+
   const [text, setText] = useState(term);
   const [fresh, setFresh] = useState(true);
 
   useEffect(() => {
     const fetchResults = () => {
-      if (text === "" && !results.length && fresh) {
-        dispatchSetSearchResults(text);
+      const sp = new URLSearchParams(location.search);
+      const term = sp.get('q') || text;
+
+      if ((text === "" && !results.length && fresh) || (term !== text && fresh)) {
+        dispatchSetSearchResults(term);
+        history.push({ search: `?q=${encodeURIComponent(term)}` });
         setFresh(false);
       }
     };
     fetchResults();
-  }, [dispatchSetSearchResults, fresh, results.length, text]);
+  }, [dispatchSetSearchResults, fresh, results.length, text, history, location.search]);
   function onSubmit(e) {
     e.preventDefault();
     dispatchSetSearchResults(text);
+    history.push({ search: `?q=${encodeURIComponent(text)}` })
   }
 
   return (

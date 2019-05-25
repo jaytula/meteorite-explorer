@@ -1,6 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import SearchPanel from "./SearchPanel";
 import SearchResults from "./SearchResults";
@@ -47,19 +48,23 @@ const styles = theme => ({
 function App({ classes }) {
   return (
     <Provider store={store}>
-      <div className={classes.root}>
-        <div className={classes.app}>
-          <header>
-            <h1>Meteorite Explorer</h1>
-            <div className={classes.tip}>
-              <b>Tip:</b> search using <a href="https://dev.socrata.com/docs/queries/where.html">SoQL</a> by prefixing with a colon. For names starting with Z, :starts_with(name, 'Z')</div>
-            <SearchPanel />
-          </header>
-          <LoadingSpinner />
-          <SearchResults />
-        </div>
-        <NotificationBar />
-      </div>
+      <Router>
+        <Route path="/">
+          <div className={classes.root}>
+            <div className={classes.app}>
+              <header>
+                <h1>Meteorite Explorer</h1>
+                <div className={classes.tip}>
+                  <b>Tip:</b> search using <a href="https://dev.socrata.com/docs/queries/where.html">SoQL</a> by prefixing with a colon. For names starting with Z, :starts_with(name, 'Z')</div>
+                <SearchPanel />
+              </header>
+              <LoadingSpinner />
+              <SearchResults />
+            </div>
+            <NotificationBar />
+          </div>
+        </Route>
+      </Router>
     </Provider>
   );
 }

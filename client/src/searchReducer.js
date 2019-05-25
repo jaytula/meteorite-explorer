@@ -12,6 +12,7 @@ try {
 } catch (err) {
   defaultState = { term: "", results: [], end: false, count: 0};
 }
+defaultState = { term: "", results: [], end: false, count: 0};
 
 const searchReducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -22,7 +23,7 @@ const searchReducer = (state = defaultState, action) => {
         results: [...state.results, ...action.payload.results],
         end: action.payload.end
       };
-      localStorage.setItem(LS_KEY, JSON.stringify(newStateAdd));
+      //localStorage.setItem(LS_KEY, JSON.stringify(newStateAdd));
       return newStateAdd; 
     case SET_RESULTS:
       const newStateSet = {
@@ -31,7 +32,7 @@ const searchReducer = (state = defaultState, action) => {
         results: action.payload.results,
         end: action.payload.end,
       };
-      localStorage.setItem(LS_KEY, JSON.stringify(newStateSet));
+      //localStorage.setItem(LS_KEY, JSON.stringify(newStateSet));
       return newStateSet;
 
     case SET_RESULTS_COUNT:
@@ -39,12 +40,12 @@ const searchReducer = (state = defaultState, action) => {
         ...state,
         count: action.count
       };
-      localStorage.setItem(LS_KEY, JSON.stringify(newStateCount));
+      //localStorage.setItem(LS_KEY, JSON.stringify(newStateCount));
 
       return newStateCount;
 
     case CLEAR_RESULTS:
-      localStorage.setItem(LS_KEY, JSON.stringify(clearedState));
+      //localStorage.setItem(LS_KEY, JSON.stringify(clearedState));
       return clearedState;
     default:
       return state;
