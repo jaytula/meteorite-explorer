@@ -37,6 +37,7 @@ function SearchPanel({
       if ((text === "" && !results.length && fresh) || (term !== text && fresh)) {
         dispatchSetSearchResults(term);
         history.push({ search: `?q=${encodeURIComponent(term)}` });
+        setText(term);
         setFresh(false);
       }
     };
