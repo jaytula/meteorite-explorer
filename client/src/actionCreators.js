@@ -11,12 +11,12 @@ import {
   CLEAR_APP_ERROR,
 } from "./actionTypes";
 const { REACT_APP_BACKEND } = process.env;
-const FETCH_AMOUNT=500;
+const FETCH_AMOUNT = 500;
 
 export const setSearchResults = (text, $offset = 0) => async dispatch => {
   try {
     dispatch({ type: SET_LOADING });
-    const $where = text.startsWith(':') ? text.slice(1) : `lower(name) like lower('%${text}%')`;
+    const $where = text.startsWith(':') ? text.slice(1) : `lower(name) like lower('%${text.trim()}%')`;
 
     const response = await axios.get(REACT_APP_BACKEND, {
       params: {
